@@ -1,0 +1,11 @@
+batch
+
+module add --name=com.microsoft.jdbc.sqlserver2000 --resources=/opt/eap/customization/modules/com/microsoft/sqlserver/jdbc/main/sqljdbc4-2.0.jar --dependencies=javax.api,javax.transaction.api
+
+/subsystem=datasources/jdbc-driver=sqlserver2000:add(driver-name=sqlserver2000,driver-module-name=com.microsoft.jdbc.sqlserver2000,driver-xa-datasource-class-name=com.microsoft.sqlserver.jdbc.SQLServerXADataSource)
+
+data-source add --name=ProcempaDockerDS --jndi-name=java:jboss/datasources/ProcempaDockerDS --driver-name=sqlserver2000 --connection-url=jdbc:sqlserver://192.168.122.212:1042;databaseName=procempa --user-name=procempa --password=procempa --min-pool-size=5 --max-pool-size=10
+
+data-source enable --name=ProcempaDockerDS
+
+run-batch
