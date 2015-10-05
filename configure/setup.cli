@@ -8,4 +8,6 @@ data-source add --name=ProcempaDockerDS --jndi-name=java:jboss/datasources/Proce
 
 data-source enable --name=ProcempaDockerDS
 
+deploy /opt/eap/customization/applications/TestJDBC.war
+
 run-batch
